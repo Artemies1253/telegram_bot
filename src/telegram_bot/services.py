@@ -3,7 +3,6 @@ from aiogram.dispatcher import FSMContext
 
 from django.conf import settings
 
-
 BOT = Bot(token=settings.TOKEN_BOT)
 
 

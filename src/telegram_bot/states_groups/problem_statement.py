@@ -3,12 +3,10 @@ from aiogram.dispatcher import FSMContext
 from asgiref.sync import sync_to_async
 from django.conf import settings
 
-
 from src.telegram_bot.enums import SoftwareSection
 from src.telegram_bot.models import ProblemStatement, Photo
 from src.telegram_bot.states import ProblemStatementGroup
 from src.telegram_bot.services import BOT
-
 
 
 async def start_problem_statement_group(message: types.Message):
@@ -98,7 +96,7 @@ async def process_finish(message: types.Message, state: FSMContext):
             "Если вы предоставили всю необходимую информацию, нажмите отправить обращение,"
             "для отмены нажмите кнопку отмены",
             reply_markup=markup
-)
+        )
 
 
 async def save_data_and_send_message(message: types.Message, state: FSMContext):
@@ -116,7 +114,8 @@ async def save_data_and_send_message(message: types.Message, state: FSMContext):
         )
         if photos:
             for photo_id in photos:
-                await sync_to_async(Photo.objects.create)(problem_statement=problem_statement, instagram_file_id=photo_id)
+                await sync_to_async(Photo.objects.create)(problem_statement=problem_statement,
+                                                          instagram_file_id=photo_id)
     await message.answer(
         "Обращение принято. В ближайшее время с вами свяжется специалист поддержки",
         reply_markup=types.ReplyKeyboardRemove()

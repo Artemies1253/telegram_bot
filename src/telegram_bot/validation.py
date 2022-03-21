@@ -7,6 +7,7 @@ def validate_first_name_and_last_name(value: str) -> bool:
     except:
         return False
 
+
 def validate_position(value: str) -> bool:
     """Профессия должна состоять только из букв, может содержать пробелы"""
     try:

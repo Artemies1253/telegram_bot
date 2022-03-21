@@ -1,4 +1,4 @@
-from aiogram import  Dispatcher, executor
+from aiogram import Dispatcher, executor
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher.filters import Text
 
